@@ -1,0 +1,47 @@
+{
+  "name": "backend-dhoondlai",
+  "version": "1.0.0",
+  "description": "Backend for Dhoondlai Application. Build with ExpressTS.",
+  "main": "src/server.ts",
+  "repository": "https://github.com/Dhoondlai/backend-dhoondlai.git",
+  "author": "<khan.hadi2951@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "serverless-http": "^3.2.0",
+    "tslib": "^2.6.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2",
+    "@types/eslint": "^8",
+    "@types/express": "^4.17.21",
+    "@types/morgan": "^1",
+    "@types/node": "^20.11.30",
+    "@types/request": "^2.48.12",
+    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/parser": "^7.4.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-promise": "^6.1.1",
+    "nodemon": "^3.1.0",
+    "prettier": "^3.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.4"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node ./dist/server.js",
+    "dev": "nodemon",
+    "prettier": "prettier --write \"src/**/*.ts\"",
+    "prettier:check": "prettier --check \"src/**/*.ts\"",
+    "lint": "eslint --ignore-path .eslintignore \"src/**/*.ts\" --fix",
+    "lint:check": "eslint --ignore-path .eslintignore \"src/**/*.ts\""
+  }
+}
