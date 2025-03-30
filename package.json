@@ -11,7 +11,12 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "serverless-http": "^3.2.0",
-    "tslib": "^2.6.2"
+    "tslib": "^2.6.2",
+    "@aws-sdk/client-ssm": "^3.699.0",
+    "mongodb": "^6.10.0",
+    "pino": "^8.19.0",
+    "pino-pretty": "^11.0.0",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "@types/cors": "^2",
@@ -38,7 +43,8 @@
   "scripts": {
     "build": "tsc",
     "start": "node ./dist/server.js",
-    "dev": "nodemon",
+    "dev": "nodemon ./src/server.ts",
+    "dev:local": "nodemon ./src/server.local.ts",
     "prettier": "prettier --write \"src/**/*.ts\"",
     "prettier:check": "prettier --check \"src/**/*.ts\"",
     "lint": "eslint --ignore-path .eslintignore \"src/**/*.ts\" --fix",
