@@ -1,4 +1,5 @@
 import { SSMClient, GetParameterCommand } from "@aws-sdk/client-ssm";
+import { logger } from "./logger";
 
 const ssmClient = new SSMClient({ region: "us-east-1" });
 
@@ -15,7 +16,9 @@ export const getSecret = async (
     const response = await ssmClient.send(command);
     return response.Parameter?.Value;
   } catch (error) {
-    console.error(`Error fetching secret "${secretName}":`, error);
+    logger.error(
+      `Error fetching secret ${secretName}: ${(error as Error).message}`,
+    );
     return undefined;
   }
 };

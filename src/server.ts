@@ -54,7 +54,7 @@ const initialize = async () => {
     logger.error(
       `Error during server initialization: ${(error as Error).message}`,
     );
-    console.log("Error during server initialization:");
+    logger.error("Error during server initialization:");
     process.exit(1); // Terminate if initialization fails
   }
 };

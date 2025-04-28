@@ -1,5 +1,6 @@
 import { type Request, type Response } from "express";
 import { collections } from "../config/db";
+import { logger } from "../libs/logger";
 
 export const getProduct = async (req: Request, res: Response) => {
   try {
@@ -17,7 +18,7 @@ export const getProduct = async (req: Request, res: Response) => {
       data: products,
     });
   } catch (errRes) {
-    console.log(errRes);
+    logger.error(errRes);
     return res.status(errRes.response.statusCode ?? 500).send({
       status: errRes.response.statusCode ?? 500,
       success: false,
@@ -54,7 +55,7 @@ export const searchProduct = async (req: Request, res: Response) => {
       data: products,
     });
   } catch (errRes) {
-    console.log(errRes);
+    logger.error(errRes);
     return res.status(errRes.response.statusCode ?? 500).send({
       status: errRes.response.statusCode ?? 500,
       success: false,
@@ -144,7 +145,7 @@ export const getAllProducts = async (req: Request, res: Response) => {
       data: products,
     });
   } catch (errRes) {
-    console.log(errRes);
+    logger.error(errRes);
     return res.status(errRes.response?.statusCode ?? 500).send({
       status: errRes.response?.statusCode ?? 500,
       success: false,
