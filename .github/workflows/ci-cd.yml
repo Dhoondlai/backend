@@ -6,6 +6,7 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
 
 env:
   FUNCTION_NAME: backend-dhoondlai
@@ -40,7 +41,7 @@ jobs:
         run: zip -r backend-lambda.zip . -x "src/*" ".vscode/*" ".github/*" ".vscode/*"
 
       - name: Upload artifact
-        if: github.event_name == 'push'
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         uses: actions/upload-artifact@v4
         with:
           name: backend-lambda
@@ -52,7 +53,7 @@ jobs:
   deploy-lambda:
     name: Deploy Lambda
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     needs: build-lambda
     steps:
       - name: Configure AWS Credentials
