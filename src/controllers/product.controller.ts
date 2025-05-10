@@ -85,11 +85,11 @@ export const getAllProducts = async (req: Request, res: Response) => {
             _id: "$standard_name",
             vendors_count: { $sum: 1 }, // Count products with same standard_name
             // Find the minimum price and corresponding vendor
-            min_price: { $min: "$price_low" },
+            min_price: { $min: "$current_price" },
             all_products: {
               $push: {
                 vendor: "$vendor",
-                price_low: "$price_low",
+                current_price: "$current_price",
                 category: "$category",
                 available: "$available",
               },
@@ -105,7 +105,7 @@ export const getAllProducts = async (req: Request, res: Response) => {
                   $filter: {
                     input: "$all_products",
                     as: "product",
-                    cond: { $eq: ["$$product.price_low", "$min_price"] },
+                    cond: { $eq: ["$$product.current_price", "$min_price"] },
                   },
                 },
                 0,
